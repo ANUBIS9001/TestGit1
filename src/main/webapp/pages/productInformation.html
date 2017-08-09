@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap-theme.min.css"/>
+		<!--公共样式表-->
+		<link rel="stylesheet" type="text/css" href="/css/Currency.css" />
+		<!--本页面样式表-->
+		<link rel="stylesheet" type="text/css" href="/css/CustomerDetails.css" />
+		<script src="/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/common/js/common.js"></script>
+		<script type="text/javascript" src="/script/projectGlobal.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="/plugin/dialogBox/css/jquery.dialogbox.css" />
+		<script type="text/javascript" src="/plugin/dialogBox/js/jquery.dialogBox.js"></script>
+	</head>
+	<body class="bg-block">
+		<header>
+			<div class="top text-center">
+				<a id="LinkHistory" class="glyphicon glyphicon-chevron-left col-xs-3"></a>
+				<h1>产品详情</h1>
+			</div>
+		</header>
+		<div class="col-xs-12 col-sm-12" id="divContrlScroll">
+			<div class="active">
+				<a id="LinkSchoolName" ><span class="col-xs-11" style="color: #428bca" id="disnoSchoolName"></span></a>
+				<a id="LinkpName" style="border-top: 1px solid #ddd;"><span class="col-xs-9" style="color: #428bca" id="pName"></span><span class="col-xs-3 pull-right text-right" style="color: #428bca" id="showProDetail">开通详情<span style="padding-right:7px;padding-left:0px;" class="glyphicon glyphicon-chevron-right pull-right text-center"></span></span></a>
+			</div>
+			
+			<div class="active col-xs-12 pull-left" id="divContact">
+				<h3 style="display:inline;">联系人</h3>
+				<a style="display:inline;"><span id="contactLink" class="col-xs-3 pull-right text-right" style="color: #428bca" id="showProDetail">更多<span style="padding-right:7px;padding-left:0px;" class="pull-right text-right glyphicon glyphicon-chevron-right "></span></span></a>
+				<ul class="panel-footer" id="contactPerson"></ul>
+			</div>
+			
+			<div class="active col-xs-12 pull-left" id="divOperate">
+				<h3>操作</h3>
+				<ul class="panel-footer2" id="ulOperate">
+					&nbsp;&nbsp;&nbsp;&nbsp;<span id="guanzhuSpan" class="glyphicon glyphicon-star" style="font-size: 20px; vertical-align: middle;" data-toggle="tooltip" data-placement="right" title="关注"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;<!-- <span id="toInputResult" class="glyphicon glyphicon-pencil" style="font-size: 20px; vertical-align: middle;color: rgb(153, 153, 153);"></span> -->
+					<span id="toInputResult" class="" style="background: #5cb85c;width: 22px;height: 22px;border-radius: 50%;color: #fff;display: inline-block;text-align: center;clear: both;line-height: 22px;vertical-align: middle;">洽</span>
+				</ul>
+			</div>
+
+			<div class="active col-xs-12 pull-left" id="divConditionList">
+				<h3>洽谈情况</h3>
+				<div class="panel-footer col-xs-12" id='discussion'>
+				</div>
+			</div>
+			
+			<div class="active col-xs-12 pull-left" id="divResult">
+				<h3>洽谈情况</h3>
+				<ul class="huizhi">
+					<li><label>联系结果</label>
+						<label><input type="radio" name="huizhi" checked="checked" id="contacted" onchange="updateLinkResult()"/>有意向</label>
+						<label><input type="radio" name="huizhi" id="noIntention" onchange="updateLinkResult()"/>无意向</label>
+						<label><input type="radio" name="huizhi" id="revisit" onchange="updateLinkResult()"/>回访</label>
+					</li>
+					<li>
+						<label>洽谈情况</label>
+						<textarea class="col-xs-8" rows="3" id="textareaRemark" onpropertychange="updateLinkResult()" oninput="updateLinkResult()" ></textarea>
+					</li>
+					<li><button type="button" class="btn btn-primary col-xs-4 col-xs-offset-2" onclick="AddSchoolLink()">提交</button><button type="button" class="btn btn-default col-xs-4 col-xs-offset-1" onclick="location.reload()">取消</button></li>
+				</ul>
+			</div>
+			
+		</div>
+		<nav class="nav-header">
+			<div class="br">
+				<span>――</span>
+			</div>
+			<a href="/pages/product.html" class="col-xs-4">产品</a>
+			<a href="/pages/clientList.html" class="col-xs-4">客户</a>
+			<a href="/pages/mine.html" class="col-xs-4">我的</a>
+		</nav>
+		<input type=hidden name="isHistoryPage" value="false">
+		
+		<script type="text/javascript">
+			$(function() {
+				$("#guanzhuSpan").on("click", function() {
+					var color = $(this).css("color");
+					if (color == "rgb(235, 147, 22)") {
+						ModifyAttention("del");
+						$(this).css("color", "#999").attr("data-original-title","未关注");
+						
+						$("#ulOperate .tooltip-inner").html("&nbsp;未关注&nbsp;");
+					} else {
+						ModifyAttention("add");
+						$(this).css("color", "#EB9316").attr("data-original-title","关注");
+						
+						$("#ulOperate .tooltip-inner").html("&nbsp;已关注&nbsp;");
+					}
+				})
+			})
+			$(function() {
+				$('[data-toggle="tooltip"]').tooltip()
+			})
+			
+			$(function() {
+				$("#toInputResult").on("click", function() {
+					$(window).scrollTop(window.screen.height);
+				})
+			})
+		</script>
+		
+		<script src="/script/goBackUrl.js"></script>	
+		<script src="/script/productInfomation.js"></script>   
+	</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap-theme.min.css" />
+		<!--公共样式表-->
+		<link rel="stylesheet" type="text/css" href="/css/Currency.css" />
+		<!--本页面样式表-->
+		<link rel="stylesheet" href="/css/binding.css" />
+		<style type="text/css">
+        #bindForm label.error
+	        {
+	        	font-size: 14px;
+	            color:Red;
+	            font-size:13px;
+	            margin-left:28%;
+	            padding-left:16px;
+	            font-weight:lighter;
+	            font-style:italic;
+	        }
+		</style>
+	</head>
+	<body class="bg-block">
+		<header>
+			<div class="top text-center">
+				<a href="javascript:history.go(-1);" class="glyphicon glyphicon-chevron-left col-xs-2"></a>
+				<h1>学科网微营销</h1>
+			</div>
+		</header>
+		<script type="text/javascript">
+			function clearClass(element){
+				if(!$(element).val()){
+					$(element).siblings(".glyphicon").remove();
+				}
+			}
+		</script>
+		<div class="bind">
+			<p><label class="col-xs-6 text-right">授权码后5位:</label><input type="text" id="subCode" class="col-xs-5" readonly="readonly"/></p>
+			<form id="bindForm" method="post">
+				<p><label class="col-xs-4 text-right">*姓名:</label><input type="text" name="loginName" id="loginName" class="col-xs-7" placeholder="请输入2-4位中文"/></p>
+				<p><label class="col-xs-4 text-right">*手机:</label><input type="number" name="telephone" id="telephone" class="col-xs-7" placeholder="请输入手机号"/></p>
+				<p><label class="col-xs-4 text-right">邮箱:</label><input type="text" name="email" id="email" class="col-xs-7" oninput="clearClass(this)"/></p>
+				<p><label class="col-xs-4 text-right">代理区域:</label><input type="text" name="proxyArea" id="proxyArea" class="col-xs-7" oninput="clearClass(this)"/></p>
+				<p><label class="col-xs-4 text-right">联系地址:</label><input type="text" name="address" id="address" class="col-xs-7" oninput="clearClass(this)"/></p>
+				<p><label class="col-xs-4 text-right">*验证码:</label><input type="number" name="messageCode" id="messageCode" class="col-xs-3"/><a href="javascript:void(0);" id="sendMsgBtn" class="col-xs-5 btn btn-default">获取验证码</a></p>
+				<p><button type="button" id="cancel" class="btn btn-default col-xs-4 col-xs-offset-1">取消</button><button type="submit" id="submit" class="btn btn-primary col-xs-4 col-xs-offset-2">确定</button></p>
+			</form>
+		</div>
+		<nav class="nav-header">
+			<div class="br">
+				<span>――</span>
+			</div>
+			<a href="Product.html" class="col-xs-4">产品</a>
+			<a href="ClientList.html" class="col-xs-4">客户</a>
+			<a href="My.html" class="col-xs-4">我的</a>
+		</nav>
+		<script src="/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/js/jquery.form.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="/js/jquery.validate.js"></script>
+		<script src="/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="/script/projectGlobal.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$.ajax({
+					url:"/userController/getCurrentUser",
+					dataType:"json",
+					type:"post",
+					success:function(data){
+						if(data.status){
+							window.location.href="/pages/mine.html";
+						}
+					}
+				});
+			//表单校验及异步提交
+				jQuery.validator.addMethod("mobile", function(value, element) {
+					var pattern = /^(1\d{10})$/;
+					return this.optional(element) || pattern.test(value);
+				});
+				jQuery.validator.addMethod("chineselen", function(value, element) {
+					var pattern = /^[\u4e00-\u9fa5 ]{2,4}$/;
+					return this.optional(element) || pattern.test(value);
+				});
+				
+				var validator=$("#bindForm").validate({
+					debug:true,
+			        rules: {
+			        	loginName : {
+			        		required : true,
+			        		chineselen : true
+			        	},
+			        	telephone : {
+			        		required : true,
+			        		mobile : true
+			        	},
+			        	messageCode : {
+			        		required : true,
+			        		digits:true,
+			        		rangelength:[6,6]
+			        	},
+			        	email:{
+			        		email:true
+			        	},
+			        	proxyArea:{
+			        		maxlength:50
+			        	},
+			        	address:{
+			        		maxlength:50
+			        	}
+			        },
+			    	messages : {
+			    		loginName : {
+			        		required : "姓名不能为空",
+			        		chineselen : "必须是2-4位汉字"
+			        	},
+			        	telephone : {
+			        		required : "手机不能为空",
+			        		mobile : "非法手机号"
+			        	},
+			        	messageCode : {
+			        		required : "验证码不能为空",
+			        		digits : "验证码为数字",
+			        		rangelength : "验证码为6位"
+			        	},
+			        	email:{
+			        		email:"非法的邮箱地址"
+			        	},
+			        	proxyArea:{
+			        		maxlength:"请不要超过50个字符"
+			        	},
+			        	address:{
+			        		maxlength:"请不要超过50个字符"
+			        	}
+			    	},
+			    	errorPlacement: function(error, element) {
+			        	element.parent().before(error);
+			        	element.siblings(".glyphicon").remove();
+			        	element.after("<span class='glyphicon glyphicon-remove pull-right' style='color:red;'></span>");
+				    }, 
+				    success: function(label) {
+				    	label.next().find(".glyphicon").remove();
+				    	label.next().find("input").after("<span class='glyphicon glyphicon-ok pull-right'></span>");
+				    	label.remove();
+				    },
+				    submitHandler:function(form) {
+				    	$("#submit").attr("disabled",true).text("提交中...");
+					    $(form).ajaxSubmit({
+					    	url:"/weChatUserController/weChatBindOA",
+							dataType:"json",
+							success:function(data) {
+								if(data.status=="false"){
+									alert(data.message);
+									$("#submit").attr("disabled",false).text("确定");
+								}else if(data.used=="used"){
+									window.location.href="/pages/error/usedCode.html";
+								}else if(data.timeout=="timeout"){
+									alert(data.message);
+									location.href="/weChatUserController/selectBinding";
+								}else{
+									window.location.href="/pages/mine.html";
+								}
+							}
+					    });
+				    }
+				});
+				
+				/////////////////////////////////////////
+				$("#subCode").val(location.search.split("=")[1]);
+				var InterValObj; //timer变量，控制时间
+				var count = 90; //间隔函数，1秒执行
+				var curCount;//当前剩余秒数
+				var sendTime=localStorage.sendTime;
+				if(sendTime!=null&&sendTime!=""){
+					var len=parseInt(sendTime)+90*1000-new Date().getTime();
+					if(len>1000){
+						curCount=Math.floor(len/1000);
+						$("#sendMsgBtn").attr("disabled","disabled");
+						$("#sendMsgBtn").html("(" + curCount + ")");
+						InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
+					}
+				}
+				//发送短信点击时间
+				$("#sendMsgBtn").on("click",function(){
+					if(!validator.element("#telephone")){
+						return false;
+					}
+					var mobile=$("#telephone").val();
+					curCount = count;
+					//设置button效果，开始计时
+					$("#sendMsgBtn").attr("disabled", "true");
+					$("#sendMsgBtn").html("(" + curCount + ")");
+					InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
+					localStorage.sendTime=new Date().getTime();
+					//向后台发送处理数据
+					$.ajax({
+					    type: "POST", //用POST方式传输
+					    dataType: "json", //数据格式:JSON
+					    url: '/weChatUserController/sendMessage', //目标地址
+					    data: {"mobile":mobile},
+					    error: function (XMLHttpRequest, textStatus, errorThrown) {
+					    	window.clearInterval(InterValObj);//停止计时器
+						    $("#sendMsgBtn").removeAttr("disabled");//启用按钮
+						    $("#sendMsgBtn").val("获取验证码");
+						    localStorage.sendTime="";
+					    },
+					    success: function (data){
+					    	if(data.status=="false"){
+					    		alert("发送失败，请稍后！");
+					    		window.clearInterval(InterValObj);//停止计时器
+							    $("#sendMsgBtn").removeAttr("disabled");//启用按钮
+							    $("#sendMsgBtn").html("获取验证码");
+							    localStorage.sendTime="";
+					    	}
+					    }
+					});
+				});
+				
+				//timer处理函数
+				function SetRemainTime() {
+					if (curCount == 0) {                
+					    window.clearInterval(InterValObj);//停止计时器
+					    $("#sendMsgBtn").removeAttr("disabled");//启用按钮
+					    $("#sendMsgBtn").html("重新发送验证码");
+					    localStorage.sendTime="";
+					}
+					else {
+					    curCount--;
+					    $("#sendMsgBtn").html("(" + curCount + ")");
+					}
+				};
+				
+				//取消点击事件
+				$("#cancel").on("click",function(){
+					window.location.href="/pages/selectBinding.html";
+				});
+			});
+		</script>
+	</body>
+</html>

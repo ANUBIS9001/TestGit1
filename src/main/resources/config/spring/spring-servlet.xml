@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"  
+	xmlns:mvc="http://www.springframework.org/schema/mvc"  
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+	
+	<!-- 自动扫描的包名 -->
+    <context:component-scan base-package="sale.*.controller"/>
+    
+    <!-- 默认的注解映射的支持 -->
+    <mvc:annotation-driven/>
+    
+    <!-- 上传文件拦截，设置最大上传文件大小   10M=10*1024*1024(B)=10485760 bytes -->  
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
+	<!--    		<property name="maxUploadSize" value="10485760" />   -->
+   		<property name="maxUploadSize" value="209715200" />
+	</bean>
+    
+	<!-- 登录拦截器 -->
+    <mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<mvc:exclude-mapping path="/notifyWYX/**"/>
+			<mvc:exclude-mapping path="/weChatController/**"/>
+			<mvc:exclude-mapping path="/pages/error/**"/>
+			<mvc:exclude-mapping path="/favicon.ico"/>
+			<mvc:exclude-mapping path="/common/**"/>
+			<mvc:exclude-mapping path="/css/**"/>
+			<mvc:exclude-mapping path="/fonts/**"/>
+			<mvc:exclude-mapping path="/img/**"/>
+			<mvc:exclude-mapping path="/js/**"/>
+			<mvc:exclude-mapping path="/script/**"/>
+			<bean class="sale.intercepter.MyMVCIntercepterHandler"></bean>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<mvc:exclude-mapping path="/notifyWYX/**"/>
+			<mvc:exclude-mapping path="/weChatController/**"/>
+			<mvc:exclude-mapping path="/pages/error/**"/>
+			<mvc:exclude-mapping path="/favicon.ico"/>
+			<mvc:exclude-mapping path="/common/**"/>
+			<mvc:exclude-mapping path="/css/**"/>
+			<mvc:exclude-mapping path="/fonts/**"/>
+			<mvc:exclude-mapping path="/img/**"/>
+			<mvc:exclude-mapping path="/js/**"/>
+			<mvc:exclude-mapping path="/script/**"/>
+			
+			<mvc:exclude-mapping path="/pages/selectBinding.html"/>
+			<mvc:exclude-mapping path="/pages/bind.html"/>
+			<mvc:exclude-mapping path="/pages/login.html"/>
+			<mvc:exclude-mapping path="/weChatUserController/**"/>
+			<mvc:exclude-mapping path="/userController/**"/>
+			<mvc:exclude-mapping path="/activeByAuthCode"/>
+			<bean class="sale.intercepter.MyMVCIntercepterHandler2"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+ 	<!-- 对静态资源文件的访问  方案一 （二选一） -->
+ 	<mvc:default-servlet-handler/>
+ 	
+ 	<!-- 对静态资源文件的访问  方案二 （二选一）-->
+	<!-- <mvc:resources mapping="/common/**" location="/common/"/>
+	<mvc:resources mapping="/css/**" location="/css/"/> 
+	<mvc:resources mapping="/fonts/**" location="/fonts/"/>
+	<mvc:resources mapping="/img/**" location="/img/"/>
+	<mvc:resources mapping="/js/**" location="/js/"/> -->
+	
+</beans> 

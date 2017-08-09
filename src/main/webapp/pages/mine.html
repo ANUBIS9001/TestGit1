@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap-theme.min.css" />
+		<!--公共样式表-->
+		<link rel="stylesheet" type="text/css" href="/css/CurrencyP.css" />
+		<!--本页面样式表-->
+		<link rel="stylesheet" href="/css/My.css" />
+		<script src="/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<!-- alert样式 -->
+		<link rel="stylesheet" type="text/css" href="/plugin/dialogBox/css/jquery.dialogbox.css" />
+		<script type="text/javascript" src="/plugin/dialogBox/js/jquery.dialogBox.js"></script>
+	</head>
+
+	<body class="bg-block">
+		<header>
+			<div class="top text-center">
+				<h1>我的</h1>
+			</div>
+		</header>
+		<div class="my">
+			<div class="media">
+				<div class="media-left">
+<!-- 						<label class="glyphicon glyphicon-check media-object"></label> -->
+					<a href="javascript:void(0)" class="">
+						<img class="media-object" src="/img/TXiang.png" alt="">
+					</a>
+				</div>
+				<div class="media-body">
+					<h4 class="media-heading" id="sellerName"><a id="logout" href="javascript:void(0);" class="zhxiao">注销</a></h4>
+				</div>
+			</div>
+			<div class="my-list">
+				<p><label class="glyphicon glyphicon-pencil"></label><a href="javascript:void(0)" onclick="toMySchools(this,1)">我的保留</a></p>
+				<p><label class="glyphicon glyphicon-edit"></label><a href="javascript:void(0)" onclick="toMySchools(this,3)">我的试用</a></p>
+				<p><label class="glyphicon glyphicon-check"></label><a href="javascript:void(0)" onclick="toMySchools(this,4)">我的使用</a></p>
+				<!-- <p><label class="glyphicon glyphicon-phone"></label><a href="javascript:void(0)" onclick="toMySchools(this,5)">我的联系</a></p> -->
+				<p><label class="glyphicon glyphicon-lock"></label><a href="javascript:void(0)" onclick="toMySchools(this,6)">我的保护</a></p>
+				<p><label class="glyphicon glyphicon-star"></label><a href="javascript:void(0)" onclick="toMySchools(this,7)">我的关注</a></p>
+				<p><label class="glyphicon glyphicon-shopping-cart"></label><a href="javascript:void(0)" onclick="toMySchools(this,8)">我的订单</a></p>
+				<!-- <p><label class="glyphicon glyphicon-hdd"></label><a href="javascript:void(0)" onclick="toMySchools(this,2)">我的代理</a></p> -->
+			</div>
+			<div class="my-list">
+				<p><label class="glyphicon glyphicon-calendar"></label><a href="javascript:void(0)" onclick="toMySchools(this,9)">一个月内要过期的使用校</a></p>
+				<p><label class="glyphicon glyphicon-folder-close"></label><a href="javascript:void(0)" onclick="toMySchools(this,10)">五天内要过期的试用校</a></p>
+				<p><label class="glyphicon glyphicon-usd"></label><a href="javascript:void(0)" onclick="toMySchools(this,11)">未全部到款的使用校</a></p>
+				<p><label class="glyphicon glyphicon-time"></label><a href="javascript:void(0)" onclick="toMySchools(this,12)">协议寄出一个月未返回</a></p>
+			</div>
+			
+			
+		</div>
+		<nav class="nav-header">
+			<div class="br">
+				<span>――</span>
+			</div>
+			<a href="/pages/product.html" class="col-xs-4">产品</a>
+			<a href="/pages/clientList.html" class="col-xs-4">客户</a>
+			<a href="/pages/mine.html" class="col-xs-4">我的</a>
+		</nav>
+		<script type="text/javascript" src="/script/goBackUrl.js"></script>
+		<script type="text/javascript" src="/script/mine.js"></script>
+		<script type="text/javascript">
+			$("#logout").on("click",function(){
+				location.href="/userController/logout?r="+new Date().getTime();
+			});
+			delCookie("historyGoBack");
+			delCookie("historyName");
+		</script>
+	</body>
+</html>

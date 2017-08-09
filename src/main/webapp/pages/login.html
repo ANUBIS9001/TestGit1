@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap-theme.min.css" />
+		<!--公共样式表-->
+		<link rel="stylesheet" type="text/css" href="/css/Currency.css" />
+		<!--本页面样式表-->
+		<link rel="stylesheet" type="text/css" href="/css/Login.css" />
+		<script src="/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="/script/projectGlobal.js"></script>
+	</head>
+	<body>
+		<header>
+			<div class="top text-center">
+				<a href="javascript:;" class="pull-left col-xs-2"><img src="/img/logo.png" /></a>
+				<h1>学科网移动营销平台--登录</h1>
+			</div>
+		</header>
+		<div class="col-xs-12 col-sm-12 login">
+			<p class="col-xs-12 col-sm-12"><label class="col-xs-3 text-right">用户名</label><input id="userName" type="text" class="form-control col-xs-9" placeholder="请输入用户名" /></p>
+			<p class="col-xs-12 col-sm-12"><label class="col-xs-3 text-right">密码</label><input id="passWord" type="password" class="form-control" placeholder="请输入密码" /></p>
+			<p class="col-xs-12 col-sm-12"><button id="loginButton" type="button" class="btn btn-primary col-xs-5 col-sm-5 pull-left">登录</button><button id="resetButton" type="button" class="btn btn-info col-xs-5 col-sm-5 pull-right">重置</button></p>
+		</div>
+		<script type="text/javascript">
+		$(function(){
+			$.ajax({
+				url:"/userController/getCurrentUser",
+				dataType:"json",
+				type:"post",
+				success:function(data){
+					if(data.status){
+						window.location.href="/pages/mine.html";
+					}
+				}
+			});
+			$("#resetButton").on("click",function(){
+				$("#userName").val("");
+				$("#passWord").val("");
+			});
+			$("#loginButton").on("click",function(){
+				var userName=$("#userName").val();
+				var passWord=$("#passWord").val();
+				if(userName==""||passWord==""){
+					alert("用户名或密码为空！");
+					return;
+				}
+				$("#loginButton").attr("disabled",true).text("登录中...");
+				$.ajax({
+					url:"/userController/login",
+					dataType:"json",
+					type : "POST",
+					data:{
+					    "userName":userName,
+					    "passWord":passWord
+					},
+					success:function(data){
+					    if(data.status=="false"){
+					        alert(data.message);
+					        $("#loginButton").attr("disabled",false).text("登录");
+					    }else{
+					    	window.location.href="/pages/mine.html";
+					    }
+					},
+					error : function() {
+					    alert("网页错误！！");
+					    $("#loginButton").attr("disabled",false).text("登录");
+					}
+				});
+			});
+		});
+		</script>
+	</body>
+</html>

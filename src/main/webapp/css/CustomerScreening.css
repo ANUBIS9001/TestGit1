@@ -1,0 +1,484 @@
+.screen{
+	width:100%;
+	font-size: 15px;
+	line-height: 30px;
+	position: relative;
+	z-index: 1;
+}
+.screen>ul{
+	width:100%;
+	overflow-y: auto;
+	height:360px;
+	margin-top: 2px;
+	float: left;
+	background: #fff;
+	z-index: -1;
+	position: absolute;
+}
+.screen>ul>li{
+	border-bottom: 1px solid #ececec;
+	padding: 4px 0px;
+	width:100%;
+	float: left;
+}
+.screen>ul>li a p{
+	padding:0 10px;
+	color:#999;
+	font-size: 13px;
+}
+.screen>ul>li a{
+	display: block;
+	width:100%;
+	float: left;
+}
+.screen>ul>li a:first-child{
+	height:30px;
+}
+.screen>ul>li>div{
+	width:100%;
+	float: left;
+}
+.screen>ul>li>div>div:first-child{
+	width:65%;
+	line-height: 20px;
+	margin-right: 10px;
+	float: left;
+	color:#999;
+	font-size: 13px;
+	padding-left: 5px;
+}
+.screen>ul>li>div>div:last-child{
+	width:31%;
+	line-height: 20px;
+	float: left;
+	color:#999;
+	font-size: 13px;
+	padding-left: 2%;
+}
+.screen>ul>li>div>div a{
+	width:auto;
+	margin-right:5px;
+	float: none;
+	display: inline;
+	color:#999;
+}
+kbd{
+	margin: 2px;
+	float: left;
+	padding: 2px;
+	font-size: 13px;
+	line-height: 15px;
+}
+.screen>ul>li a p:first-child{
+	color:#111;
+	font-size: 16px;
+}
+.screen>ul>li a label{
+	width:85%;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	font-weight: normal;
+	font-weight: bold;
+	color:#111;
+	text-indent: 5px;
+}
+/*
+.screen .header{
+	text-align: center;
+	line-height: 40px;
+	height:40px;
+	background: #666;
+	border-bottom: 1px solid #555;
+	border-top: 1px solid #555;
+	color: #efefef;
+	position: fixed;
+	width:100%;
+}
+.screen .header div{
+	border-left:2px solid #bbb;
+	height: 40px;
+	position: relative;
+	padding: 0px;
+}
+.screen .header .form-inline{
+	margin-bottom: 10px;
+	margin-top: 3px;
+	float: left;
+	width:100%;
+}
+.screen .header div>a{
+	color: #fff;
+	display: block;
+	width:100%;
+}
+.screen .header div ul{
+	position: absolute;
+	z-index: 10;
+	top:39px;
+	left:0px;
+	background: #ececec;
+	border: 1px solid #555;
+	border-top: 0px;
+	display: none;
+	width:100%;
+	min-width: auto;
+}
+.screen .header div ul li{
+	margin: 0px;
+	border-bottom: 1px dashed #888;
+}
+.screen .header div ul li:last-child{
+	border: 0px;
+}
+.screen .header div ul a{
+	color: #333;
+	line-height: 30px;
+	display: block;
+}
+.screen .header div:first-child{
+	border: 0px;
+}
+.screen .header span{
+	padding: 10px 2px;
+}
+.screen ul li{
+	line-height: 20px;
+	margin: 5px 0px;
+	width:100%;
+	float: left;
+	font-size: 13px;
+}
+.screen ul li span{
+	color: #428BCA;
+}
+.screen ul li a{
+	color: #444;
+
+}*/
+/*筛选条件*/
+/*.screen-list{
+	position: absolute;
+	top:0px;
+	left:100%;
+	z-index: 1003;
+	background: #fff;
+	line-height: 25px;
+	padding:50px 0px 70px;
+	width:100%;
+	display: none;
+	font-size: 15px;
+}
+.screen-list h3{
+	width:100%;
+	line-height: 40px;
+	height:40px;
+	font-size: 16px;
+	color: #333;
+	background: #666;
+	position: fixed;
+}
+.screen-list h3 span,.screen-list h3 a{
+	color: #fff;
+	width:25%;
+	text-align: center;
+	display: block;
+	float: left;
+	height:40px;
+}
+.screen-list h3 span{
+	border-bottom: 2px solid red;
+}
+.screen-list h3 button{
+	margin:3px 5px;
+}
+.screen-list ul{
+	padding: 0px 10px;
+	margin-top: 40px;
+}
+.screen-list ul li{
+	width:100%;
+	float: left;
+}
+.screen-list ul li label{
+	width:100%;
+	float: left;
+}
+.screen-list div{
+	float: left;
+}
+.screen-list div a{
+	margin-right: 10px;
+	float: left;
+	margin-bottom: 5px;
+	padding: 0px 5px;
+	border-radius: 5px;
+}
+.screen-list div a.on{
+	background: #428bca;
+	color: #fff;
+}*/
+/*地区分页*/
+/*.region{
+	width:100%;
+	background: #333;
+	position: absolute;
+	z-index: 101;
+	top:90px;
+	height:85%;
+	display: none;
+}
+@media only screen and (max-height:568px ) {
+	.region{
+		height:80%;
+	}
+}
+.region h3{
+	font-size: 13px;
+	height:30px;
+	line-height: 30px;
+	width:100%;
+	background: #fff;
+}
+.region h3 a{
+	margin-left: 10px;
+	color: #333;
+}
+.region .region-list{
+	color: #333;
+	background: #eee;
+	width:100%;
+	float: left;
+}
+.region .region-btn{
+	color: #333;
+	background: #eee;
+	width:100%;
+	float: left;
+	padding: 20px 0 10px;
+}
+.region .region-list a{
+	color: #fff;
+	margin: 5px;
+	background: #28A4C9;
+	display: block;
+	float: left;
+	padding: 5px 6px;
+	font-size: 13px;
+}*/
+/*新建客户*/
+
+/*.add,.BasicI{
+	background: #fff;
+	color: #333;
+	width:100%;
+	float: left;
+	padding-bottom: 10px;
+	
+}
+.add h3,.BasicI h3{
+	background: #428bca;
+	font-size: 16px;
+	color: #fff;
+	line-height: 30px;
+	text-indent: 10px;
+}
+.add div{
+	height: 30px;	
+	padding:10px 0px;
+	margin: 10px 0px;
+}
+.add div input[type="text"]{
+	padding: 0px;
+}*/
+/*客户基本信息*/
+/*.BasicI{
+	display: none;
+}
+.BasicI ul li label{
+	width:25% !important;
+	display: block;
+	float: left;
+}
+.BasicI ul li div label{
+	float: left;
+	width:60px !important;
+	text-align: left;
+}
+.BasicI input[type="text"],.BasicI ul div{
+	width:70% !important;
+	float: left;
+}
+.BasicI li>select{
+	width:65%;
+}
+.BasicI div select{
+	width:100%;
+	margin: 5px 0;
+}
+.BasicI select,.BasicI input[type="text"]{
+	border:1px solid #ccc;
+	border-radius: 5px;
+	padding: 3px 5px;
+}*/
+
+/*颜色*/
+.bao{
+	background: #666EFF;
+}
+.baohu,.baiqiang{
+	background: #FF3030;
+}
+.daili{
+	background: #FF6600;
+}
+.suo{
+	background: #FB6058;
+}
+.shengzhdian{
+	background: #04AD10;
+}
+.cl-guanzhu{
+	color: #dc9703;
+	font-size: 20px;
+}
+
+.condition{
+	position: absolute;
+	z-index: 1001;
+	background: #fff;
+	display: none;
+	width:90%;
+	left:100%;
+	top:0px;
+	height:100%;
+	overflow-y: auto;
+}
+.condition header{
+	line-height:40px;
+	height:40px;
+	border-bottom: 1px solid #ececec;
+	width:90%;
+	position: fixed;
+	background: #fff;
+	z-index: 10;
+}
+.condition header h2{
+	font-size: 18px;
+	text-align: center;
+	line-height:40px;
+	float:left;
+	padding: 0px;
+}
+.condition header a{
+	float: left;
+	color: #555;
+	padding: 0px;
+	text-align: center;
+	font-size: 18px;
+}
+.container-list{
+	width:100%;
+	margin-top: 40px;
+}
+.container-list li{
+	width:100%;
+	float: left;
+}
+.container-list li span{
+	display: block;
+	line-height: 50px;
+	color:#333;
+	float: right;
+}
+.container-list li>a{
+	color:#333;
+	width:100%;
+	height:50px;
+	line-height: 50px;
+	display: block;
+	border-bottom: 1px solid #ccc;
+	padding: 0px 10px;
+	float: left;
+}
+.container-list li label{
+	width:60%;
+	height:40px;
+	float: right;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	text-align: right;
+	font-weight: normal;
+}
+.container-list li div{
+	background: #f4f5f7;
+	padding:0px 10px;
+	line-height: 25px;
+	width:100%;
+	float: left;
+	margin: 0px;
+	
+	border-bottom: 1px solid #ccc;
+	display: none;
+}
+.container-list li div a{
+	color:#333;
+	background: #fff;
+	border-radius: 5px;
+	float: left;
+	margin: 5px;
+	padding: 0px 5px;
+	text-align: center;
+	border:1px solid #ccc;
+}
+.qingchu{
+	background: #f4f5f7;
+	text-align: center;
+	padding: 30px 0px;
+	width:100%;
+	float: left;
+}
+.qingchu a{
+	background: #fff;
+	border:1px solid #ccc;
+	width:100px;
+	height:30px;
+	line-height: 30px;
+	display: block;
+	border-radius: 5px;
+	margin: auto;
+}
+
+.sousuo{
+	width:100%;
+	height:35px;
+	margin: 50px 0px 5px;
+	float: left;
+	border:1px solid #0D64B1;
+}
+.sousuo select{
+	border: 0px;
+	width:26%;
+	height:33px;
+	margin: 0px;	
+	line-height: 33px;
+	float: left;
+	border-right: 1px solid #0D64B1;
+}
+.sousuo input{
+	height:33px;
+	float: left;
+	
+}
+.sousuo input{
+	width:50%;
+	border:0px;
+	float: left;
+}
+.sousuo input[type='button']{
+	width:24%;
+	float: left;
+	background: #0D64B1;
+	color:#fff;
+}

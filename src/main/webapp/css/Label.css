@@ -1,0 +1,50 @@
+.active {
+	line-height: 30px;
+	font-size: 14px;
+	background: #fff;
+	float: left;
+	width: 100%;
+}
+
+.active p,
+.active div {
+	padding-left: 10px;
+	width: 100%;
+	float: left;
+	margin-bottom: 10px;
+}
+
+.active div span {
+	float: left;
+}
+
+.active div a {
+	border: 1px solid #aaa;
+	border-radius: 20px;
+	padding: 2px 5px;
+	margin-left: 10px;
+	color: #666;
+	display: block;
+	float: left;
+	height: 24px;
+	line-height: 20px;
+	margin-bottom: 5px;
+	font-size: 13px;
+}
+
+.active div.add b {
+	margin: 0px;
+	margin-left: 5px;
+	font-size: 18px;
+	float: right;
+}
+
+.active div a.a1 {
+	border: 1px solid #04AD10;
+}
+
+.active div a.a2 {
+	border: 1px solid #04AD10;
+	background: #04AD10;
+	color: #fff;
+}

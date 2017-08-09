@@ -1,0 +1,11 @@
+eclipse.preferences.version=1
+encoding//src/main/java/sale/utils/HttpUtils.java=UTF-8
+encoding//src/main/java/sale/utils/XMLParseUtiles.java=UTF-8
+encoding//src/main/java/sale/utils/XMLUtils.java=UTF-8
+encoding//src/main/java/sale/workflow/controller/CustomerController.java=UTF-8
+encoding//src/main/java/sale/workflow/controller/LabelController.java=UTF-8
+encoding//src/main/java/sale/workflow/controller/TestController.java=UTF-8
+encoding//src/main/java/sale/workflow/dao/ProductDao.java=UTF-8
+encoding//src/main/java/sale/workflow/scheduler/ProductScheduler.java=UTF-8
+encoding//src/main/resources/config/config.properties=UTF-8
+encoding//src/main/resources/config/mybatis/ProductMapper.xml=UTF-8

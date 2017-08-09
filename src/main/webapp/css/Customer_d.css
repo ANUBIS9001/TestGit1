@@ -1,0 +1,27 @@
+body{
+	background: #E0E0E0;
+}
+.Cus_D{
+	line-height:30px;
+	font-size: 15px;
+}
+.Cus_D p{
+	padding: 0px 10px;
+	float: left;
+	background: #fff;
+	margin-top:10px;
+	width:100%;
+	box-shadow: 0px 0px 10px #ccc;
+	border: 1px solid #ccc;
+}
+.Cus_D p span,.Cus_D p label{
+	float: left;
+}
+.Cus_D p span{
+	width:70%;
+	color: #666;
+}
+.Cus_D p label{
+	width:30%;
+	
+}

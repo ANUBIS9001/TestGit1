@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sale.workflow.dao.ProductDao">
+	<insert id="insert" parameterType="sale.workflow.bean.Product">
+		insert into t_product values (#{id, jdbcType=BIGINT}, #{name, jdbcType=VARCHAR})
+	</insert>
+	<delete id="deleteAll" parameterType="java.lang.Long">
+		delete from t_product
+	</delete>
+	<select id="getProductById" parameterType="java.lang.Long" resultType="sale.workflow.bean.Product">
+		select * from t_product where id=#{productId}
+	</select>
+	<select id="getAllProduct" resultType="sale.workflow.bean.Product">
+		select * from t_product_show
+	</select>
+	<select id="getProductsByIds" resultType="sale.workflow.bean.Product">
+		select * from t_product
+		where id in
+		<foreach item="item" index="index" collection="ids" open="(" separator="," close=")">
+                #{item}
+        </foreach>
+	</select>
+</mapper>

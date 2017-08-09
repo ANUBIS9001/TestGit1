@@ -1,0 +1,46 @@
+#service url of old sale system
+serviceUrl=http://120.26.41.48:8081
+#serviceUrl=http://36.110.49.99:2222
+#销售系统接口参数中的name
+serviceName=wyx
+##销售系统接口参数中的code
+serviceCode=948b5f98afe460c55c0b90f9a1ac046b
+
+#QR Code properties
+width_default=200
+height_default=200
+
+#WeChat properties begin
+#公众号应用id
+appid=wx7b8fda1db20e6586
+#公众号应用密钥
+secret=2aa57946764e36e8904d169afda2c016
+#公众号授权回调页面域名
+domain=wyx.zxxk.com
+#回调地址
+callBackUrl=/weChatController/callBack
+
+#OA用户名登录接口正式地址
+OALoginUrl=http://oa.zxxk.com/OAService.asmx/OALoginByName
+#OA用户名登录接口测试地址
+#OALoginUrl=http://test.oa.zxxk.com/OAService.asmx/OALoginByName
+#OA激活账户接口
+OAActivationUrl=http://oa.zxxk.com/OAService.asmx/OA_Activation
+#OA激活账户接口
+#OAActivationUrl=http://test.oa.zxxk.com/OAService.asmx/OA_Activation
+
+#发送短信正式地址
+sendMessageUrl=http://ShortMessageSend.zxxk.com/SMSService.asmx/ShortMessageSend
+#发送短信测试地址
+#sendMessageUrl=http://192.168.1.16:9210/SMSService.asmx/ShortMessageSend
+
+#OA用户离职通知微营销，更新状态失败，短信提示开发者查看
+notifyWYX.userStateChange.errorMobile=17091002326
+
+#需要调用的标签分类
+LabelSection=T_level,T_teacherCount
+
+#测试环境的标签接口初始化参数
+labelapikey=zxxk.wechatsale
+labelsecretkey=2ea2f32088310e0ceec2b15a7ad22493
+labelapiurl=http://36.110.49.99:8081/rest

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta charset="utf-8" />
+		<title>营销系统——绑定错误</title>
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap-theme.min.css" />
+		<!--公共样式表-->
+		<link rel="stylesheet" type="text/css" href="/css/Currency.css" />
+		<!--本页面样式表-->
+		<link rel="stylesheet" href="/css/error.css" />
+		<script type="text/javascript" src="/js/jquery.js"></script>
+		<script src="/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body class="bg-BD">
+		<div class="text-center col-xs-12 img">
+			<img src="/img/BD.png" alt=""/>
+		</div>
+		<div class="follow">
+			<div class="prompt">
+				<div class="text-center">
+					<p>您已绑定OA账户!</p><p>一个微信帐号只能绑定一个OA帐号！</p>
+				</div>
+				<div>
+					<div class="col-xs-6 text-center"><h4><a href="/pages/mine.html" class="btn btn-default col-xs-12">去首页看看</a></h4></div>
+					<div  class="col-xs-6 text-center"><h4><a href="javascript:history.go(-1);" class="btn btn-default col-xs-12">返回</a></h4></div>
+				</div>
+				<div>
+					<div id="clearSession" class="col-xs-12 text-center"><h4><a href="javascript:void(0);" class="btn btn-default col-xs-12">清除session（测试用）</a></h4></div>
+					<hr>
+					友情提示：先删数据据库，再清除session
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+		$("#clearSession").on("click",function(){
+			$.ajax({
+				url:"/weChatUserController/clearSession",
+				dataType:"json",
+				type:"POST",
+				success:function(data){
+					alert("清除完毕");
+					window.location.href="/pages/mine.html";
+				}
+			});
+		})
+		</script>
+	</body>
+</html>

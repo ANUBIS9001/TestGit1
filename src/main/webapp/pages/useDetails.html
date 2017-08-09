@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap-theme.min.css"/>
+		<!--公共样式表-->
+		<link rel="stylesheet" type="text/css" href="/css/CurrencyP.css" />
+		<!--本页面样式表-->
+		<link rel="stylesheet" type="text/css" href="/css/CustomerDetails.css" />
+		<script src="/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="/script/projectGlobal.js"></script>
+		<!-- alert样式 -->
+		<link rel="stylesheet" type="text/css" href="/plugin/dialogBox/css/jquery.dialogbox.css" />
+		<script type="text/javascript" src="/plugin/dialogBox/js/jquery.dialogBox.js"></script>
+		<style type="text/css">
+			.active{
+				margin-top: 10px;
+			}
+			.active p b.glyphicon{
+				font-size: 18px;
+				margin-right: 5px;
+			}
+			.footer{
+				margin-top: 20px;
+				height:40px;
+				line-height: 25px;
+				font-weight: bold;
+				font-size: 16px;
+			}
+		</style>
+	</head>
+	<body class="bg-block">
+		<header>
+			<div class="top text-center">
+				<a href="javascript:void(0)" id="LinkHistory" class="col-xs-3"><span class="glyphicon glyphicon-chevron-left"></span></a>
+				<h1 id="title"></h1>
+			</div>
+		</header>
+		<div class="col-xs-12 col-sm-12">
+			<div class="active" id="schoolDiv">
+				<a href="javascript:void(0)" id="toCustomerDetails" onclick="toSchool()"><span class="col-xs-8" id="schoolName"></span><span class="col-xs-3" id="zkSchoolName">客户产品</span><span id="zkSchool" class="glyphicon glyphicon-chevron-right col-xs-1 text-center"></span></a>
+			</div>
+			<div class="active" id="productDiv">
+				<a href="javascript:void(0)" id="toProductScreening" onclick="toProduct()"><span class="col-xs-8" id="productName"></span><span class="col-xs-3" id="zkProductName">客户列表</span><span id="zkProduct" class="glyphicon glyphicon-chevron-right pull-right col-xs-1 text-center"></span></a>
+			</div>
+			<div class="active" id="serviceLevelDiv">
+				<a href="javascript:void(0)"><span class="col-xs-11" id="serviceLevel">服务等级</span></a>
+			</div>
+			<div class="active" id="useTrial" style="display:none;">
+				<h3 id="timeTitle">使用时间</h3>
+				<div class="panel-footer col-xs-12 pull-left">
+					<div>
+						<p><span id="beginTitle" class="col-xs-8">使用开始日期:</span><span class="col-xs-4" id="beginTime"></span></p>
+						<p><span id="endTitle" class="col-xs-8">使用结束日期:</span><span class="col-xs-4" id="endTime"></span></p>
+					</div>
+				</div>
+			</div>
+			<div class="active" id="partPay" style="display:none;">
+				<h3 id="timeTitle">详情</h3>
+				<div class="panel-footer col-xs-12 pull-left">
+					<div>
+						<p><span class="col-xs-8">开始日期:</span><span class="col-xs-4" id="beginTimePartPay"></span></p>
+						<p><span class="col-xs-8">结束日期:</span><span class="col-xs-4" id="endTimePartPay"></span></p>
+						<p><span class="col-xs-8">销售金额:</span><span class="col-xs-4" id="totalMoney"></span></p>
+						<p><span class="col-xs-8">已到款金额:</span><span class="col-xs-4" id="receiveMoney"></span></p>
+						<p><span class="col-xs-8">未到款金额:</span><span class="col-xs-4" id="notReceiveMoney"></span></p>
+					</div>
+				</div>
+			</div>
+			<div class="active" id="noBackProtocol" style="display:none;">
+				<h3 id="timeTitle">详情</h3>
+				<div class="panel-footer col-xs-12 pull-left">
+					<div>
+						<p><span class="col-xs-8">协议寄出时间:</span><span class="col-xs-4" id="sendTime"></span></p>
+						<p><span class="col-xs-8">协议金额:</span><span class="col-xs-4" id="protocolMoney"></span></p>
+						<p id="signType"><span class="col-xs-8">签约状态:</span><span class="col-xs-4" id="contractStatus"></span></p>
+						<p id="isFreeSchool"><span class="col-xs-8">是否资源合作校:</span><span class="col-xs-4" id="resourceCooperation"></span></p>
+					</div>
+				</div class="panel-footer col-xs-12 pull-left">
+			</div>
+			<div class="active" id="process" style="display:none;">
+				<h3>流程</h3>
+				<div class="panel-footer col-xs-12 pull-left">
+					<div>
+						<p id="p1"><span class="col-xs-8">合同信息:</span><span class="col-xs-4"><b id="b1" class="glyphicon glyphicon-ok-sign text-success"></b><span id="protocolStatus">已确认</span></span></p>
+						<p id="p2"><span class="col-xs-8">快递信息:</span><span class="col-xs-4"><b id="b2" class="glyphicon glyphicon-exclamation-sign text-danger"></b><span id="deliveryStatus">未确认</span></span></p>
+						<p id="p3"><span class="col-xs-8">协议反馈信息:</span><span class="col-xs-4"><b id="b3" class="glyphicon glyphicon-exclamation-sign text-danger"></b><span id="protocolBackStatus">未确认</span></span></p>
+						<p id="p4"><span class="col-xs-8">发票信息:</span><span class="col-xs-4"><b id="b4" class="glyphicon glyphicon-exclamation-sign text-danger"></b><span id="billStatus">未确认</span></span></p>
+						<p id="p5"><span class="col-xs-8">到款信息:</span><span class="col-xs-4"><b id="b5" class="glyphicon glyphicon-exclamation-sign text-danger"></b><span id="receiveMoneyStatus">未确认</span></span></p>
+					</div>
+				</div>
+			</div>
+			<div class="active" style="display:none;text-align:center" id="noDate"><p>该学校尚未订购该产品</p></div>
+			<div class="active col-xs-12 pull-left" id="divOperate" style="display:none">
+				<h3>操作</h3>
+				<ul class="panel-footer2" id="ulOperate">
+					&nbsp;&nbsp;&nbsp;&nbsp;<span id="guanzhuSpan" class="glyphicon glyphicon-star" style="color:#EB9316;font-size: 20px; vertical-align: middle;" data-original-title="取消关注" data-toggle="tooltip" data-placement="right" title="关注"></span>
+				</ul>
+			</div>
+			<div class="text-right alert alert-success pull-left" style="width:100%;" role="alert">更多详情，请在电脑端查看</div>
+			<a id="revisit" href="javascript:void(0)" class="col-xs-12 btn btn-success footer" onclick="toRevisit()">我要回访</a>
+		</div>
+		<nav class="nav-header">
+			<div class="br">
+				<span>――</span>
+			</div>
+			<a href="/pages/product.html" class="col-xs-4">产品</a>
+			<a href="/pages/clientList.html" class="col-xs-4">客户</a>
+			<a href="/pages/mine.html" class="col-xs-4">我的</a>
+		</nav>
+	</body>
+</html>
+<script type="text/javascript" src="/common/js/common.js"></script>
+<script type="text/javascript" src="/script/goBackUrl.js"></script>
+<script type="text/javascript" src="/script/useDetails.js"></script>

@@ -1,0 +1,41 @@
+header div a{
+	padding: 0px !important;
+	float: left;
+}
+
+.login{
+	margin-top:30px;
+}
+.login h3{
+	margin-bottom: 10px;
+	font-size: 16px;
+	border-bottom: 1px solid #ececec;
+	height:40px;
+	line-height: 40px;
+}
+.login p,.login div{
+	margin-top: 10px;
+	height: 40px;
+	line-height: 40px;
+}
+.form-control{
+	width:75%;
+}
+.login input[type="checkbox"]{
+	width:20px;
+	height:20px;
+	margin:10px 2px 0;
+}
+.login button{
+	margin-left: 10px;
+}
+.login a{
+	margin-right: 0px;
+}
+.login label{
+	padding: 0px;
+	padding-right: 5px;
+}
+.nav li a{
+	padding: 0 10px;
+}

@@ -1,0 +1,31 @@
+.classification{
+	width:100%;
+	float: left;
+}
+.classification div{
+	border-bottom: 1px solid #DCDCDC;
+	width:100%;
+	float: left;
+	margin-top: 10px;
+}
+.classification div p{
+	border-top: 1px solid #DCDCDC;
+	height:40px;
+	float: left;
+	background: #fff;
+}
+.classification div p a{
+	display: block;
+	height: 30px;
+	line-height: 30px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	color: #333;
+	font-weight: normal;
+}
+.classification div p a img{
+	width:30px;
+	height: 30px;
+	border: 0px;
+	font-size: 10px;
+}

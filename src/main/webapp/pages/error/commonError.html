@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta charset="utf-8" />
+		<title>营销系统——错误</title>
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap-theme.min.css" />
+		<!--公共样式表-->
+		<link rel="stylesheet" type="text/css" href="/css/Currency.css" />
+		<!--本页面样式表-->
+		<link rel="stylesheet" href="/css/error.css" />
+		<script type="text/javascript" src="/js/jquery.js"></script>
+		<script src="/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="error">
+			<div class="prompt">
+				<h3>哎呀!我被卡住了</h3>
+				<div>
+				<!--如果只有一行的话，根据情况可以删除label和ul，只写一行文字-->
+					<label class="col-xs-5 text-right pull-left">可能原因:</label>
+					<ul class="col-xs-6 pull-left">
+						<li>网络信号弱</li>
+						<li>找不到请求页面了</li>
+						<li>输入的地址不正确</li>
+					</ul>
+				</div>
+				<div>
+					<div  class="col-xs-12 text-center"><h4><a href="javascript:history.go(-1);"><span class="glyphicon glyphicon-repeat text-danger"></span>返回</a></h4></div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

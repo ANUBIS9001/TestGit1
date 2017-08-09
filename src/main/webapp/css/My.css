@@ -1,0 +1,67 @@
+
+.my .media{
+	margin-top: 10px;
+	background: #fff;
+	padding: 10px 0;
+}
+.media-left{
+	height:64px;
+	width:64px;
+	float: left;
+	margin-left: 10px;
+}
+.media .media-left a{
+	font-size: 50px;
+	display: block;
+	float:left;
+	position: relative;
+	width:64px;
+	height:64px;
+	line-height: 64px;
+	text-align: center;
+	border: 1px solid #ccc;
+}
+.media .media-left a img{
+	width:62px;
+	height:62px;
+	float: left;
+	position: absolute;
+	z-index: 10;
+	top:0px;
+	left:0px;
+	
+}
+.my .media .media-body h4{
+	margin-top: 40px;
+	padding-left: 10px;
+}
+.my .my-list{
+	margin-top: 10px;
+	background: #fff;
+	line-height: 40px;
+}
+.my .my-list p{
+	border-top: 1px solid #ececec;
+}
+.my .my-list label{
+	display: block;
+	width:30px;
+	height:30px;
+	margin: 5px;
+	float: left;
+	text-align: center;
+	line-height: 30px;
+}
+.my .my-list a{
+	color: #333;
+	font-size: 14px;
+	margin-left: 10px;
+}
+
+.zhxiao{
+	border: 1px solid #0177DB;
+	padding:2px 10px;
+	border-radius: 5px;
+	margin-left: 10px;
+	font-size: 13px;
+}

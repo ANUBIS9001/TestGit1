@@ -1,0 +1,34 @@
+{
+    "button": [
+        {
+            "type": "view", 
+            "name": "工作台", 
+            "url": "http://test.wyx.zxxk.com/weChatUserController/selectBinding"
+        }, 
+        {
+            "type": "view", 
+            "name": "我的订单", 
+            "url": "http://test.wyx.zxxk.com/customer/goToMySchools"
+        }, 
+        {
+            "name": "营销推广", 
+            "sub_button": [
+		{
+                    "type": "view", 
+                    "name": "营销策略", 
+                    "url": "http://www.zxxk.com"
+                },
+                {
+                    "type": "view", 
+                    "name": "微信绑定", 
+                    "url": "http://test.wyx.zxxk.com/weChatUserController/selectBinding"
+                },
+                {
+                	"type":"view",
+                	"name":"帮助中心",
+                	"url":"http://test.wyx.zxxk.com/pages/help.html"
+                }
+            ]
+        }
+    ]
+}

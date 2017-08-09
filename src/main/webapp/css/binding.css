@@ -1,0 +1,33 @@
+.bind{
+	background: #fff;
+	margin-top: 10px;
+	padding:30px 10px;
+}
+.bind p{
+	font-size: 13px;
+	height: 35px;
+	line-height: 35px;
+	margin-bottom: 10px;
+}
+.bind p input{
+	padding: 3px;
+	height:35px;
+	line-height: 35px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+.bind p a{
+	width:110px;
+	display: block;
+	padding:6px;
+	margin-left: 10px;
+}
+.bind p span{
+	display: block;
+	line-height: 35px;
+	color: green;
+}
+.bind p #yanzheng{
+	font-size: 10px;
+	font-weight: normal;
+}

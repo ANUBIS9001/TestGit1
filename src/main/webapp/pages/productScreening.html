@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap-theme.min.css" />
+		<!--公共样式表-->
+		<link rel="stylesheet" type="text/css" href="/css/Currency_pro.css" />
+		<!--本页面样式表-->
+		<link rel="stylesheet" href="/css/ProductScreening.css" />
+		<script src="/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<!-- <script src="/js/customerScreening_pro.js" type="text/javascript" charset="utf-8"></script> -->
+		<script src="/common/js/common.js"></script>
+		<script src="/common/js/validate.js"></script>
+		<script type="text/javascript" src="/script/projectGlobal.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="/plugin/dialogBox/css/jquery.dialogbox.css" />
+		<script type="text/javascript" src="/plugin/dialogBox/js/jquery.dialogBox.js"></script>
+	</head>
+
+	<body>
+		<header>
+			<div class="top text-center">
+				<a id="LinkHistory" href="javascript:void(0);" class="col-xs-3"><span class="glyphicon glyphicon-chevron-left" style="font-weight:bold;"></span></a>
+				<h1 id="pName"></h1>
+				<a class="col-xs-3 pull-right" id="con"><span class="glyphicon glyphicon-search"></span></a>
+				
+				<!-- <a id="LinkHistory" href="/pages/product.html" class="glyphicon glyphicon-chevron-left col-xs-3"></a>
+				<h1 id="pName"></h1>
+				<a id="con" class="glyphicon glyphicon-search pull-right col-xs-3"></a> -->
+				
+				<!-- <button type="button" class="btn btn-default pull-right" style="margin-right: 10px;" id="canLinkButton">可联系</btton> -->
+				
+			</div>
+		</header>
+		<div class="screen">
+			<img style="display:none;width:100%;position:absolute;" id='loadinggif' src='/img/loading.gif'/>
+			<ul id="tbody">
+			</ul>
+		</div>
+		<div class="tch2" style="display: none"></div>
+		<div class="condition">
+			<header>
+				<a href="javascript:;" class="col-xs-3" onclick="javascript:Screening();"><span class="label label-success" style="font-size:15px">确定</span><!-- <span class="glyphicon glyphicon-chevron-left"></span> --></a>
+				<h2 class="col-xs-8">筛选</h2>
+				<!-- <a href="javascript:;" class="col-xs-2 pull-right" onclick="javascript:Screening();">确定</a> -->
+			</header>
+			
+			<div class="sousuo">
+				<select>
+					<option value="id">学校ID</option>
+					<option value="name">学校名称</option>
+				</select>
+				<input type="text" id='exampleInputEmail2' value="" style="width:74%;" />
+			</div>
+
+			<ul class="container-list">
+				<li>
+					<a href="javascript:;">地区<span class="glyphicon glyphicon-chevron-right pull-right col-xs-1"></span><label>不限</label></a>
+					<div id="region-list">
+						<!-- <a href="javascript:;">河北省</a><a href="javascript:;">河北省</a><a href="javascript:;">河北省</a><a href="javascript:;">河北省</a><a href="javascript:;">河北省</a><a href="javascript:;">河北省</a><a href="javascript:;">内蒙古自治区</a><a href="javascript:;">河北省</a>
+						<a href="javascript:;">河北省</a><a href="javascript:;">河北省</a><a href="javascript:;">河北省</a><a href="javascript:;">河北省</a><a href="javascript:;">河北省</a><a href="javascript:;">河北省</a><a href="javascript:;">河北省</a><a href="javascript:;">河北省</a><a href="javascript:;">河北省</a> -->
+					</div>
+				</li>
+				
+				<li>
+					<a href="javascript:;">学段<span class="glyphicon glyphicon-chevron-right pull-right col-xs-1"></span><label id="stages_label">不限</label></a>
+					<div id="stages"><a href="javascript:;" class="on">不限</a><a href="javascript:;" data_stages="1">小学</a><a href="javascript:;" data_stages="2">初中</a><a href="javascript:;" data_stages="3">高中</a><a href="javascript:;" data_stages="4">小初</a><a href="javascript:;" data_stages="5">初高</a><a href="javascript:;" data_stages="6">小初高</a><a href="javascript:;" data_stages="7">幼儿园</a></div>
+				</li>
+				<li>
+    				<a href="javascript:;">产品<span class="glyphicon glyphicon-chevron-right pull-right col-xs-1"></span><label id="productID_label" style="color:red;">不限</label></a>
+					<div id="productID"><a href="javascript:;" data_productID="1">e卷通</a><a href="javascript:;" data_productID="8">中学网校通</a><a href="javascript:;" data_productID="6">小学网校通</a><a href="javascript:;" data_productID="5">学易云</a><a href="javascript:;" data_productID="0">学易书城</a></div>
+				</li>
+				<li>
+					<a href="javascript:;">客户类别<span class="glyphicon glyphicon-chevron-right pull-right col-xs-1"></span><label id="schoolType_label">不限</label></a>
+					<div id="schoolType"><a href="javascript:;" class="on">不限</a><a href="javascript:;" data_schoolType="7">幼儿园</a><a href="javascript:;" data_schoolType="1">小学</a><a href="javascript:;" data_schoolType="2">中学</a><a href="javascript:;" data_schoolType="4">县教育局</a><a href="javascript:;" data_schoolType="10">市教育局</a><a href="javascript:;" data_schoolType="5">教育厅</a><a href="javascript:;" data_schoolType="6">培训机构</a><a href="javascript:;" data_schoolType="8">出版社</a><a href="javascript:;" data_schoolType="9">公司</a></div>
+				</li>
+				<li>
+					<a href="javascript:;">状态<span class="glyphicon glyphicon-chevron-right pull-right col-xs-1"></span><label id="statusID_label">不限</label></a>
+					<div id="statusID"><a href="javascript:;" class="on">不限</a><a href="javascript:;" data_statusID="4">待使用</a><a href="javascript:;" data_statusID="6">使用</a><a href="javascript:;" data_statusID="3">待试用</a><a href="javascript:;" data_statusID="5">试用</a><a href="javascript:;" data_statusID="-1">过期</a><a href="javascript:;" data_statusID="-2">已关闭</a><a href="javascript:;" data_statusID="0">未联系</a></div>
+				</li>
+				<li>
+					<a href="javascript:;">协议<span class="glyphicon glyphicon-chevron-right pull-right col-xs-1"></span><label id="contractType_label">不限</label></a>
+					<div id="contractType"><a href="javascript:;" class="on">不限</a><a href="javascript:;" data_contractType="2">新签</a><a href="javascript:;" data_contractType="1">续费</a><a href="javascript:;" data_contractType="3">续转新</a><a href="javascript:;" data_contractType="4">协议新签</a></div>
+				</li>
+				<li>
+					<a href="javascript:;">客户等级<span class="glyphicon glyphicon-chevron-right pull-right col-xs-1"></span><label id="schoolLevel_label">不限</label></a>
+					<div id="schoolLevel"><a href="javascript:;" class="on">不限</a><a href="javascript:;" data_schoolLevel="5">百强校</a><a href="javascript:;" data_schoolLevel="4">国家重点</a><a href="javascript:;" data_schoolLevel="3">省重点</a><a href="javascript:;" data_schoolLevel="2">市重点</a><a href="javascript:;" data_schoolLevel="1">县重点</a><a href="javascript:;" data_schoolLevel="0">普通</a><a href="javascript:;" data_schoolLevel="6">资源校</a></div>
+				</li>
+				<li>
+					<a href="javascript:;">锁定<span class="glyphicon glyphicon-chevron-right pull-right col-xs-1"></span><label id="isLock_label">不限</label></a>
+					<div id="isLock"><a href="javascript:;" class="on">不限</a><a href="javascript:;" data_isLock="1">是</a><a href="javascript:;" data_isLock="0">否</a></div>
+				</li>
+				<li>
+					<a href="javascript:;">所属<span class="glyphicon glyphicon-chevron-right pull-right col-xs-1"></span><label id="mySchools_label">全部</label></a>
+					<div id="mySchools"><a href="javascript:;" class="on" data_my="0">全部</a><a href="javascript:;" data_my="1">我的</a>
+				</li>
+				<li>
+					<a href="javascript:;">可联系<span class="glyphicon glyphicon-chevron-right pull-right col-xs-1"></span><label id="canLink_label">可联系</label></a>
+					<div id="canLink"><a href="javascript:;" data_canLink="0">全部</a><a href="javascript:;" class="on" data_canLink="1">可联系</a>
+				</li>
+			</ul>
+			<div class="qingchu">
+				<a href="javascript:;" onclick="ClearAllCondition();">清除选项</a>
+			</div>
+		</div>
+		<!--底导航-->
+		<nav class="nav-header">
+			<div class="br">
+				<span>――</span>
+			</div>
+			<a href="/pages/product.html" class="col-xs-4">产品</a>
+			<a href="/pages/clientList.html" class="col-xs-4">客户</a>
+			<a href="/pages/mine.html" class="col-xs-4">我的</a>
+		</nav>
+		<input type=hidden name="isHistoryPage" value="false">
+		
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("header button").click(function() {
+					alert(123)
+				})
+			})
+		</script>
+		<script src="/script/goBackUrl.js"></script>	
+		<script src="/script/regionCondition.js"></script>
+		<script src="/script/productScreening.js"></script>	
+	</body>
+
+</html>

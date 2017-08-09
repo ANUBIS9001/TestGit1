@@ -1,0 +1,92 @@
+.screen ul li {
+	border-bottom: 1px solid #ececec;
+}
+
+.screen ul li span {
+	color: #333;
+	padding: 0px 5px;
+	line-height: 30px;
+}
+
+.screen ul li span:first-child {
+	color: #428bca;
+}
+
+.form-inline {
+	padding: 0px;
+	margin-bottom: 0px !important;
+}
+
+.form-inline div {
+	border: 0px !important;
+	margin: 0px;
+	font-size: 13px;
+}
+
+.form-inline div button {
+	padding: 2px 5px 0px 5px;
+	line-height: 30px;
+	font-size: 13px;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+	width: 100%;
+}
+
+.form-inline div button span {
+	width: 15px;
+	display: block;
+	height: 30px;
+	font-size: 13px;
+	float: right;
+	padding: 0px;
+	color: #333;
+}
+
+.form-control {
+	border-left: 0px;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+}
+.dropdown-menu{
+	top:32px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

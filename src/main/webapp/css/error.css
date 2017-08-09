@@ -1,0 +1,146 @@
+.error {
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	background: url(../img/error.jpg) no-repeat center center;
+	background-size: auto 100%;
+}
+
+.prompt {
+	position: relative;
+	top: 50%;
+	color: #333;
+}
+
+.prompt h3 {
+	text-align: center;
+	line-height: 50px;
+	font-size: 34px;
+	font-weight: bold;
+}
+
+.prompt div {
+	line-height: 30px;
+	margin-top: 20px;
+	font-size: 15px;
+}
+
+.prompt div * {
+	padding: 0px 2px;
+}
+.prompt ul{
+	font-size: 13px;
+}
+a {
+	color: #333;
+	display: block;
+	line-height: 40px;
+}
+
+/*follow.html样式*/
+
+.bg-FL {
+	background: #333;
+	padding: 0px
+}
+
+@media only screen and (max-height:559px) {
+	.img {
+		margin: 5% 15%;
+	}
+}
+
+@media only screen and (min-height:560px) {
+	.img {
+		margin: 8% 15%;
+	}
+}
+@media only screen and (min-height:640px) {
+	.img {
+		margin: 15% 15%;
+	}
+}
+
+.img {
+	float: left;
+	width: 70% !important;
+	color: #efefef;
+}
+
+.follow {
+	width: 100%;
+	float: left;
+}
+
+.follow .prompt {
+	color: #fff;
+}
+
+.follow a {
+	color: #fff;
+}
+
+.img img {
+	width: 100%;
+	/*border: 1px solid #ececec !important;*/
+	/*box-shadow: 0px 0px 80px #000;*/
+	float: left;
+}
+
+.img div {
+	margin-top: 10px;
+	float: left;
+	width: 100%;
+	color: #fff;
+}
+/*BD_error.html*/
+.bg-BD{
+	background: #e2fbc7;
+}
+.bg-BD .prompt{
+	padding: 0px 30px;
+}
+.bg-BD .prompt div{
+	color:#333;
+	font-size: 15px !important;
+}
+.bg-BD .prompt div a{
+	color:#0177db;
+	line-height: 35px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap-theme.min.css" />
+		<!--公共样式表-->
+		<link rel="stylesheet" type="text/css" href="/css/CurrencyP.css" />
+		<!--本页面样式表-->
+		<link rel="stylesheet" href="/css/CustomerScreeningP.css" />
+		<link rel="stylesheet" type="text/css" href="/css/My-listAll.css" />
+		<script src="/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="/script/projectGlobal.js"></script>
+		<!-- alert样式 -->
+		<link rel="stylesheet" type="text/css" href="/plugin/dialogBox/css/jquery.dialogbox.css" />
+		<script type="text/javascript" src="/plugin/dialogBox/js/jquery.dialogBox.js"></script>
+		<style type="text/css">
+			.screen ul li{
+				border-bottom: 1px solid #ececec;
+			}
+			.screen ul li span{
+				color:#333;
+				padding:0px 5px;
+				line-height: 30px;
+			}
+			.screen ul li div,.screen ul li div a,.screen ul li div>span{
+				padding:2px;
+				color:#777;
+			}
+			.screen ul li a span:first-child{
+				color:#333;
+			}
+			.over_hide{
+			    overflow: hidden;
+			    text-overflow: ellipsis;
+			    white-space: nowrap;
+			    color:#999
+			}
+			.selfSchoolStatus{
+				font-size:13px;
+				background:#04AD10;
+				color:white;
+			}
+			.othersSchoolStatus{
+				font-size:13px;
+				background:#FF6600;
+				color:white;
+			}
+			.shengzhongdian{
+				font-size:13px;
+				background:#04AD10;
+				color:white;
+			}
+			.baiqiang{
+				font-size:13px;
+				background:#FF3030;
+				color:white;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header>
+			<div class="top text-center">
+				<a href="javascript:;" id="LinkHistory" class="col-xs-3"><span class="glyphicon glyphicon-chevron-left"></span></a>
+				<h1 id="pageTitle"></h1>
+				<a href="javascript:;" class="col-xs-3 pull-right" id="con"><span class="glyphicon glyphicon-search"></span></a>
+			</div>
+		</header>
+		<div class="screen">
+			<img style="display:none;top:10px;width:100%;position:absolute;" id='loadinggif' src='/img/loading.gif'/>
+
+			<ul style="display:block;" id="schoolList">
+			</ul>
+		</div>
+		<div class="tch2" style="display: none"></div>
+		<div class="condition">
+			<header>
+				<!-- <a href="javascript:;" class="col-xs-2"><span class="glyphicon glyphicon-chevron-left"></span></a> -->
+				<a href="javascript:;" class="col-xs-3 "><span class="label label-success" style="font-size:15px">确 定</span></a>
+				<h2 class="col-xs-8">筛选</h2>
+			</header>
+			
+			<div class="sousuo">
+				<select id="searchSelect" value="id">
+					<option id="myschoolId">学校ID</option>
+					<option id="myschoolName">学校名称</option>
+				<select>
+				<input type="text" value="" id="searchText" style="width:74%"/>
+			</div>
+			
+			<ul class="container-list">
+				<li id="myregionli">
+					<a href="javascript:;" id="myregion" >地区<span class="glyphicon glyphicon-chevron-right pull-right col-xs-1"></span><label id="regionShow">不限</label></a>
+					<div class="region-list" id="region-list"></div>
+				</li>
+				<li id="periodLi">
+					<a href="javascript:;" id="period" class="hideCondition">学段<span class="glyphicon glyphicon-chevron-right pull-right col-xs-1"></span><label id="periodShow">不限</label></a>
+					<div id="periodList"></div>
+				</li>
+				<li id="productLi">
+					<a href="javascript:;" id="product" class="hideCondition">产品<span class="glyphicon glyphicon-chevron-right pull-right col-xs-1"></span><label id="productShow">不限</label></a>
+					<div id="productList"></div>
+				</li>
+				<li id="statusParamLi">
+					<a href="javascript:;" id="statusParam" class="hideCondition">状态<span class="glyphicon glyphicon-chevron-right pull-right col-xs-1"></span><label id="statusParamShow">不限</label></a>
+					<div id="statusParamList"></div>
+				</li>
+				<li id="schoolLevelLi">
+					<a href="javascript:;" id="schoolLevel" class="hideCondition">学校等级<span class="glyphicon glyphicon-chevron-right pull-right col-xs-1"></span><label id="schoolLevelShow">不限</label></a>
+					<div id="schoolLevelList"></div>
+				</li>
+				<li id="serviceLevelLi">
+					<a href="javascript:;" id="serviceLevel" class="hideCondition">服务等级<span class="glyphicon glyphicon-chevron-right pull-right col-xs-1"></span><label id="serviceLevelShow">不限</label></a>
+					<div id="serviceLevelList"></div>
+				</li>
+				<li id="customerTypeLi">
+					<a href="javascript:;" id="customerType" class="hideCondition">客户类型<span class="glyphicon glyphicon-chevron-right pull-right col-xs-1"></span><label id="customerTypeShow">不限</label></a>
+					<div id="customerTypeList"></div>
+				</li>
+			</ul>
+			<div class="qingchu">
+				<a href="javascript:;" onclick="ClearAllCondition();">清除选项</a>
+			</div>
+		</div>
+		<nav class="nav-header">
+			<div class="br">
+				<span>――</span>
+			</div>
+			<a href="/pages/product.html" class="col-xs-4">产品</a>
+			<a href="/pages/clientList.html" class="col-xs-4">客户</a>
+			<a href="/pages/mine.html" class="col-xs-4">我的</a>
+		</nav>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#ssou").on("click", function() {
+					$(this).next("ul").show();
+				});
+				$("#ssou").next("ul").find("a").click(function(){
+					var val=$(this).html();
+					$("#ssou").val(val).html(val+'<span class="glyphicon glyphicon-chevron-down"></span>').next("ul").hide();
+				})
+				$(document).mouseup(function(e) {
+					var _con = $('#ssou').next("ul");
+					if (!_con.is(e.target) && _con.has(e.target).length === 0) {
+						_con.hide();
+					}
+				});
+			})
+		</script>
+	</body>
+
+</html>
+<script type="text/javascript" src="/common/js/common.js"></script>
+<script type="text/javascript" src="/script/goBackUrl.js"></script>
+<script type="text/javascript" src="/script/regionCondition.js"></script>
+<script type="text/javascript" src="/script/mySchools.js"></script>

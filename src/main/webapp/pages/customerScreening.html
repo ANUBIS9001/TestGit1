@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap-theme.min.css" />
+		<!--公共样式表-->
+		<link rel="stylesheet" type="text/css" href="/css/CurrencyCustomer.css" />
+		<!--本页面样式表-->
+		<link rel="stylesheet" href="/css/CustomerScreening.css" />
+<!-- 		<link rel="stylesheet" href="/css/My-listAll.css" /> -->
+		<script src="/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="/js/jquery.form.js"></script>
+		<script src="/common/js/common.js"></script>
+		<script type="text/javascript" src="/script/projectGlobal.js"></script>
+		<link rel="stylesheet" type="text/css" href="/plugin/dialogBox/css/jquery.dialogbox.css" />
+		<script type="text/javascript" src="/plugin/dialogBox/js/jquery.dialogBox.js"></script>
+	</head>
+
+	<body>
+		<header>
+			<div class="top text-center">
+				<a href="/pages/clientList.html" class="col-xs-3"><span class="glyphicon glyphicon-chevron-left"></span></a>
+				<h1>客户列表</h1>
+				<a href="javascript:;" class="col-xs-3 pull-right" id="con"><span class="glyphicon glyphicon-search"></span></a>
+			</div>
+		</header>
+		<div class="screen">
+			<img style="display:none;width:100%;position:absolute;" id='loadinggif' src='/img/loading.gif'/>
+			<ul id="tbody">
+			</ul>
+		</div>
+		<div class="tch2" style="display: none"></div>
+		<div class="condition">
+			<header>
+				<a href="javascript:;" class="col-xs-3" id="confirm"><span class="label label-success" style="font-size:15px">确定</span></a>
+				<h2 class="col-xs-8">筛选</h2>
+<!-- 				<a href="javascript:;" class="col-xs-2 pull-right" id="confirm">确定</a> -->
+			</header>
+			<div class="sousuo">
+				<select>
+					<option value="id">学校ID</option>
+					<option value="name">学校名称</option>
+				</select>
+				<input type="text" id='exampleInputEmail2' style="width:74%;"/>
+			</div>
+			<ul class="container-list">
+				<li>
+					<a href="javascript:;">地区<span class="glyphicon glyphicon-chevron-right pull-right col-xs-1"></span><label>不限</label></a>
+					<div id="region-list">
+					</div>
+				</li>
+				<li id="sstages">
+					<a href="javascript:;">学段<span class="glyphicon glyphicon-chevron-right pull-right col-xs-1"></span><label>不限</label></a>
+					<div>
+						<a href="javascript:getSchoolListByStages('','不限');">不限</a>
+						<a href="javascript:getSchoolListByStages(1,'小学');">小学</a><a href="javascript:getSchoolListByStages(2,'初中');">初中</a><a href="javascript:getSchoolListByStages(3,'高中');">高中</a>
+						<a href="javascript:getSchoolListByStages(4,'小初');">小初</a><a href="javascript:getSchoolListByStages(5,'初高');">初高</a><a href="javascript:getSchoolListByStages(6,'小初高');">小初高</a>
+						<a href="javascript:getSchoolListByStages(7,'幼儿园');">幼儿园</a>
+					</div>
+				</li>
+				<li id="sschoolLevel">
+					<a href="javascript:;">客户等级<span class="glyphicon glyphicon-chevron-right pull-right col-xs-1"></span><label>不限</label></a>
+					<div>
+						<a href="javascript:getSchoolListBySchoolLevel('','不限');">不限</a>
+						<a href="javascript:getSchoolListBySchoolLevel(5,'百强校');">百强校</a><a href="javascript:getSchoolListBySchoolLevel(4,'国家重点');">国家重点</a><a href="javascript:getSchoolListBySchoolLevel(3,'省重点');">省重点</a>
+						<a href="javascript:getSchoolListBySchoolLevel(2,'市重点');">市重点</a><a href="javascript:getSchoolListBySchoolLevel(1,'县重点');">县重点</a><a href="javascript:getSchoolListBySchoolLevel(0,'普通');">普通</a>
+						<a href="javascript:getSchoolListBySchoolLevel(6,'资源校');">资源校</a>
+					</div>
+				</li>
+				<li id="sschoolType">
+					<a href="javascript:;">客户类别<span class="glyphicon glyphicon-chevron-right pull-right col-xs-1"></span><label >不限</label></a>
+					<div>
+						<a href="javascript:getSchoolListBySchoolType('','不限');" >不限</a><a href="javascript:getSchoolListBySchoolType(1,'小学');" >小学</a>
+						<a href="javascript:getSchoolListBySchoolType(2,'中学');">中学</a><a href="javascript:getSchoolListBySchoolType(4,'县教育局');">县教育局</a>
+						<a href="javascript:getSchoolListBySchoolType(5,'教育厅');" >教育厅</a><a href="javascript:getSchoolListBySchoolType(6,'培训机构');">培训机构</a><a href="javascript:getSchoolListBySchoolType(7,'幼儿园');">幼儿园</a>
+						<a href="javascript:getSchoolListBySchoolType(8,'出版社');" >出版社</a><a href="javascript:getSchoolListBySchoolType(9,'公司');" >公司</a>
+						<a href="javascript:getSchoolListBySchoolType(10,'市教育局');" >市教育局</a>
+					</div>
+				</li>
+				<li id='sproductName'>
+    				<a href="javascript:;">产品<span class="glyphicon glyphicon-chevron-right pull-right col-xs-1"></span><label id="productID_label">不限</label></a>
+					<div id="productID"><a href="javascript:;" class="on">全部</a><a href="javascript:;" data_statusID="4">待使用</a><a href="javascript:;" data_statusID="6">使用</a><a href="javascript:;" data_statusID="3">待试用</a><a href="javascript:;" data_statusID="5">试用</a><a href="javascript:;" data_statusID="-1">过期</a><a href="javascript:;" data_statusID="-2">已关闭</a><a href="javascript:;" data_statusID="0">未联系</a></div>
+				</li>
+				<li id="sstatus">
+					<a href="javascript:;">状态<span class="glyphicon glyphicon-chevron-right pull-right col-xs-1"></span><label id="statusID_label">不限</label></a>
+					<div id="statusID">
+						<a href="javascript:getStatusId('','');" class="on">不限</a><a href="javascript:getStatusId(4,'待使用');" data_statusID="4">待使用</a><a href="javascript:getStatusId(6,'使用');" data_statusID="6">使用</a><a href="javascript:getStatusId(3,'待试用');" data_statusID="3">待试用</a><a href="javascript:getStatusId(5,'试用');" data_statusID="5">试用</a>
+						<a href="javascript:getStatusId(-1,'过期');" data_statusID="-1">过期</a><a href="javascript:getStatusId(-2,'已关闭');" data_statusID="-2">已关闭</a><a href="javascript:getStatusId(0,'未联系');" data_statusID="0">未联系</a>
+					</div>
+				</li>
+			</ul>
+			<div class="qingchu">
+				<a href="javascript:;" onclick="ClearAllCondition();">清除选项</a>
+			</div>
+		</div>
+		<!--底导航-->
+		<nav class="nav-header">
+			<div class="br">
+				<span>――</span>
+			</div>
+			<a href="/pages/product.html" class="col-xs-4">产品</a>
+			<a href="/pages/clientList.html" class="col-xs-4">客户</a>
+			<a href="/pages/mine.html" class="col-xs-4">我的</a>
+		</nav>
+<!-- 	<script type="text/javascript" src="/script/addCustomer.js"></script> -->
+	<script src="/script/regionCondition.js"></script>
+	<script src="/script/customerScreening.js"></script>	
+<!-- 	<script type="text/javascript" src="/common/js/validate.js"></script> -->
+<!-- 	<script type="text/javascript"> -->
+<!-- // 		$(function() { -->
+<!-- // 			$.alert(2222222) -->
+<!-- // 		}) -->
+<!-- 	</script> -->
+	</body>
+
+</html>
